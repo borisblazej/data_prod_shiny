@@ -1,0 +1,14 @@
+name: covid
+title: covid
+username:
+account: nagrne-boris-blazej
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5964856
+bundleId: 5757958
+url: https://nagrne-boris-blazej.shinyapps.io/covid/
+when: 1648927702.73512
+lastSyncTime: 1648927702.73512
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: tests/shinytest/mytest-expected/001.json|tests/shinytest/mytest-expected/001.png|tests/shinytest/mytest.R|tests/shinytest.R
