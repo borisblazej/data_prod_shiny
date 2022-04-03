@@ -52,7 +52,7 @@ shinyUI(
                         "Tirol" = 7,
                         "Vorarlberg" = 8,
                         "Wien" = 9,
-                        "Overall" = 10
+                        "Total" = 10
                     )
                 ),
                 actionButton("update", label = "Calculate"),
@@ -65,11 +65,21 @@ shinyUI(
             mainPanel(tabsetPanel(
                 type = "tabs",
                 tabPanel("Analysis", 
-                         h3("Time Series Analysis:"),
+                         tags$h3("Time Series Analysis:"),
+                         tags$p("Dcomposition analysis takes the training (i.e. historic) data as specified by the input parameters and decomposes it into a (smoothed trend, a 7-day seasonal component and the remaining random part."),
+                         tags$div("The applied method is described at ", 
+                                  tags$a(href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/decompose", "rdocumentation.")),
+                         tags$div("The data is used from ", 
+                                  tags$a(href="https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0", "data.gv.at-Open Data Österreich.")),
                          plotOutput("decompose_plot")
                          ),
                 tabPanel("Prediction", 
                          h3("14 Days Prediction:"),
+                         tags$p("The forecast uses the elements from the decomposition analysis and calculates a forecast for 14 days following the final training day. Try changing the final training day to compare forecast and as-is or the number of training weeks to compare different forecasts."),
+                         tags$div("The applied method is described at ", 
+                                  tags$a(href="https://www.rdocumentation.org/packages/forecast/versions/8.16/topics/auto.arima", "rdocumentation.")),
+                         tags$div("The data is used from ", 
+                                  tags$a(href="https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0", "data.gv.at-Open Data Österreich.")),
                          plotOutput("prediction_plot")
                          )
             ))

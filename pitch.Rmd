@@ -2,35 +2,58 @@
 title: "Austria Covid Forecast"
 author: "Boris Blazej"
 date: '2022-04-02'
-output: slidy_presentation
+output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
 source("./covid_poc.R")
 ```
 
-## R Markdown
+## Published Covid case figures in Austria follow a weekly seasonal pattern 
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Since the pandemic began, COVID figures are omnipresent in our everyday's life. For data scientists this flood of data must draw attention earlier or later. Especially interesting is the __weekly seasonal pattern__ in published cases in Austria: Tuesdays through Thursdays show typically significantly higher case numbers than the other days of the week. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+This app shall
 
-## Slide with Bullets
+1. analyse and highlight this weekly seasonal pattern and
+2. use it for a simple 14-day-forecast
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+The app can be viewed at [Austria Covid Forecast](https://nagrne-boris-blazej.shinyapps.io/covid/)
 
-## Slide with R Output
 
-```{r cars, echo = TRUE}
-summary(cars)
+## First, the app decomposes a training time series ...
+
+```{r decompose, fig.height= 3}
+ddata <- decompose(t_series, "multiplicative")
+
+plot(ddata)
 ```
 
-## Slide with Plot
 
-```{r pressure}
-plot(pressure)
+## ... then it uses this to forecast the next 14 days
+
+```{r forecast, fig.height= 3}
+next_2_weeks <- forecast(mymodel, c(95), h = 2 * 7)
+
+plot(next_2_weeks)
 ```
+
+
+
+## Background
+
+### __Input Parameters:__
+
+The forecast uses data up to the __'final training day'__ ranging back __'number of training weeks'__. 
+One can select either one of the nine Austrian provinces or the total Austrian numbers.
+
+### __Important limitation:__ 
+
+Since automated data updates (~600kB from [data.gv.at-Open Data Österreich](https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0)) fail on shinyapps.io there is a dataset available with the app for proper functionality. Please refer to the app (left lower section) for latest update info
+
 

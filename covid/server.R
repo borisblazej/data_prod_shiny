@@ -7,7 +7,7 @@ library(stringr)
 library(forecast)
 
 data_url <-
-    "https://xcovid19-dashboard.ages.at/data/CovidFaelle_Timeline.csv"
+    "https://covid19-dashboard.ages.at/data/CovidFaelle_Timeline.csv"
 temp_file <- "./temp/CovidFaelle_Timeline.csv"
 
 
