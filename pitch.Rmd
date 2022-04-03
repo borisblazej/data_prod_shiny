@@ -1,5 +1,7 @@
 ---
 title: "Austria Covid Forecast"
+subtitle: "Please consider some seconds load time 
+for background calculations!"
 author: "Boris Blazej"
 date: '2022-04-03'
 output: ioslides_presentation
@@ -54,6 +56,8 @@ One can select either one of the nine Austrian provinces or the total Austrian n
 
 ### __Important limitation:__ 
 
-Since automated data updates (~600kB from [data.gv.at-Open Data Österreich](https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0)) fail on shinyapps.io there is a dataset available with the app for proper functionality. Please refer to the app (left lower section) for latest update info
+Since automated data updates (~600kB from [data.gv.at-Open Data Österreich](https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0)) fail on shinyapps.io there is a dataset attached to the app for proper functionality. Please refer directly to the app (left lower section) for latest update info.
+
+The app can be viewed at [Austria Covid Forecast](https://nagrne-boris-blazej.shinyapps.io/covid/)
 
 

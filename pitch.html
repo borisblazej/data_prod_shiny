@@ -9,7 +9,7 @@
 
 
 
-  <meta name="date" content="2022-04-02" />
+  <meta name="date" content="2022-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,7 +21,8 @@
       // Slide settings
       settings: {
                 title: 'Austria Covid Forecast',
-                        useBuilds: true,
+                        subtitle: 'Please consider some seconds load time for background calculations!',
+                useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
         enableTouch: true,
@@ -3206,9 +3207,9 @@ slide:not(.current) .plotly.html-widget{
         <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
-      
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">2022-04-02</p>
+            <p style="margin-top: 6px; margin-left: -2px;">2022-04-03</p>
           </hgroup>
   </slide>
 
@@ -3243,11 +3244,11 @@ plot(next_2_weeks)</pre>
 
 </article></slide><slide class><hgroup><h2>Background</h2></hgroup><article id="background">
 
-<h3><strong>==&gt; Input Parameters:</strong></h3>
+<h3><strong>Input Parameters:</strong></h3>
 
-<p>The forecast uses data up to the <strong>final training day</strong> ranging back <strong>number of training weeks</strong>. One can select either one of the nine Austrian provinces or the total Austrian data.</p>
+<p>The forecast uses data up to the <strong>‘final training day’</strong> ranging back <strong>‘number of training weeks’</strong>. One can select either one of the nine Austrian provinces or the total Austrian numbers.</p>
 
-<h3><strong>==&gt; Important limitation:</strong></h3>
+<h3><strong>Important limitation:</strong></h3>
 
 <p>Since automated data updates (~600kB from <a href="https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0" title>data.gv.at-Open Data Österreich</a>) fail on shinyapps.io there is a dataset available with the app for proper functionality. Please refer to the app (left lower section) for latest update info</p></article></slide>
 

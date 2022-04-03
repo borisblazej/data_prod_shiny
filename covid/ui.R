@@ -70,7 +70,7 @@ shinyUI(
                          tags$div("The applied method is described at ", 
                                   tags$a(href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/decompose", "rdocumentation.")),
                          tags$div("The data is used from ", 
-                                  tags$a(href="https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0", "data.gv.at-Open Data Österreich.")),
+                                  tags$a(href="https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0", "data.gv.at-Open Data Österreich (German!).")),
                          plotOutput("decompose_plot")
                          ),
                 tabPanel("Prediction", 
@@ -79,7 +79,7 @@ shinyUI(
                          tags$div("The applied method is described at ", 
                                   tags$a(href="https://www.rdocumentation.org/packages/forecast/versions/8.16/topics/auto.arima", "rdocumentation.")),
                          tags$div("The data is used from ", 
-                                  tags$a(href="https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0", "data.gv.at-Open Data Österreich.")),
+                                  tags$a(href="https://www.data.gv.at/katalog/dataset/ef8e980b-9644-45d8-b0e9-c6aaf0eff0c0", "data.gv.at-Open Data Österreich (German!).")),
                          plotOutput("prediction_plot")
                          )
             ))
