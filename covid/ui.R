@@ -13,7 +13,7 @@ library(lubridate)
 library(stringr)
 library(forecast)
 
-latest_update <- date("2022-04-02")
+latest_update <- date("2022-04-03")
 
 # Define UI for application
 shinyUI(
@@ -57,7 +57,7 @@ shinyUI(
                 ),
                 actionButton("update", label = "Calculate"),
                 p("\n"),
-                p(HTML("<em><red>Important: data updated on 2022-04-02<br>(automated updates fail on shinyapps.io)</em>"),
+                p(HTML("<em><red>Important: data updated on 2022-04-03<br>(automated updates fail on shinyapps.io)</em>"),
                        style="color:red;")
             ),
             

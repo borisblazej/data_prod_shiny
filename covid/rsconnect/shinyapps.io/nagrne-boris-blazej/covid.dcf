@@ -5,9 +5,9 @@ account: nagrne-boris-blazej
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5964856
-bundleId: 5759375
+bundleId: 5760010
 url: https://nagrne-boris-blazej.shinyapps.io/covid/
-when: 1648989776.10571
-lastSyncTime: 1648989776.10571
+when: 1649011587.68628
+lastSyncTime: 1649011587.68628
 asMultiple: FALSE
 asStatic: FALSE
