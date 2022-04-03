@@ -13,6 +13,8 @@ library(lubridate)
 library(stringr)
 library(forecast)
 
+latest_update <- date("2022-04-02")
+
 # Define UI for application
 shinyUI(
     fluidPage(
@@ -33,9 +35,9 @@ shinyUI(
                 dateInput(
                     "final_training_day",
                     "Final training day",
-                    value = today(),
-                    max = today(),
-                    min = today() - days(7 * 10)
+                    value = latest_update,
+                    max = latest_update,
+                    min = latest_update - days(7 * 10)
                 ),
                 radioButtons(
                     "province",
@@ -53,7 +55,10 @@ shinyUI(
                         "Overall" = 10
                     )
                 ),
-                actionButton("update", label = "Calculate")
+                actionButton("update", label = "Calculate"),
+                p("\n"),
+                p(HTML("<em><red>Important: data updated on 2022-04-02<br>(automated updates fail on shinyapps.io)</em>"),
+                       style="color:red;")
             ),
             
             # Show a plot of the generated distribution

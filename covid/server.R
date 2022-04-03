@@ -7,7 +7,9 @@ library(stringr)
 library(forecast)
 
 data_url <-
-    "https://covid19-dashboard.ages.at/data/CovidFaelle_Timeline.csv"
+    "https://xcovid19-dashboard.ages.at/data/CovidFaelle_Timeline.csv"
+temp_file <- "./temp/CovidFaelle_Timeline.csv"
+
 
 # PARAMETERS ------------------------------------------
 
@@ -18,9 +20,17 @@ data_url <-
 
 shinyServer(function(input, output) {
 
-    # 1. Get & slice data ------------------------------
-    covid_raw <- read.csv2(data_url, encoding = "UTF-8")
+    # 1. Get data  ------------------------------
+    ### done once when loading the app
+    ### NOT reactive
+
+    ### Download of new data only works offline
+    # download.file(url = data_url,
+    #               destfile = temp_file)
     
+    covid_raw <- read.csv2(temp_file, encoding = "UTF-8")
+
+    # 2. Slice data based on input  ------------------------------
     t_series <- eventReactive( input$update, {
             covid_slim <- covid_raw %>%
                 mutate(date = dmy_hms(Time)) %>%
@@ -36,7 +46,7 @@ shinyServer(function(input, output) {
                 select(c(13, 2:5, 9, 11))
             
             
-            # 2. Time Series definition  -----------------------------
+            # 3. Time Series definition  -----------------------------
             
             sub_set <- covid_slim %>%
                 filter(BundeslandID == input$province) %>%
@@ -51,7 +61,7 @@ shinyServer(function(input, output) {
     })
             
             
-    # 3. Decomposition Plot  -----------------------------
+    # 4. Decomposition Plot  -----------------------------
         
     ddata <- eventReactive(input$update, {
             decompose(t_series(), "multiplicative")
@@ -62,17 +72,17 @@ shinyServer(function(input, output) {
         
     })
     
-    # 4. Calculate forecast  -----------------------------
+    # 5. Calculate forecast  -----------------------------
     mymodel <- eventReactive(input$update, {
         auto.arima(t_series())
     })
-    ### plot(mymodel$residuals)
+
     next_2_weeks <- eventReactive(input$update, {
         forecast(mymodel(), c(95), h = 2 * 7)
     })
     
     
-    # 5. Plot Forecast  -----------------------------
+    # 6. Plot Forecast  -----------------------------
     
     
     output$prediction_plot <- renderPlot({

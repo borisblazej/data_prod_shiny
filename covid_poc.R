@@ -10,6 +10,7 @@ library(forecast)
 
 data_url <-
     "https://covid19-dashboard.ages.at/data/CovidFaelle_Timeline.csv"
+temp_file <- "./temp/CovidFaelle_Timeline.csv"
 
 # PARAMETERS ------------------------------------------
 
@@ -19,7 +20,10 @@ input$final_training_day <- today() - 14
 input$province <- 9 # select 1-9, 10 = all
 
 # 1. Get & slice data ------------------------------
-covid_raw <- read.csv2(data_url, encoding = "UTF-8")
+download.file(url = data_url, 
+              destfile = temp_file)
+
+covid_raw <- read.csv2(temp_file, encoding = "UTF-8")
 
 covid_slim <- covid_raw %>%
         mutate(date = dmy_hms(Time)) %>%
@@ -48,9 +52,9 @@ t_series <- ts(sub_set$AnzahlFaelle,
 
 # 3. Decomposition Plot  -----------------------------
 
-ddata <- decompose(t_series, "additive")
+ddata <- decompose(t_series, "multiplicative")
 
-plot(ddata)
+p1 <- plot(ddata)
 
 mymodel <- auto.arima(t_series)
 
@@ -59,5 +63,5 @@ next_2_weeks <- forecast(mymodel, c(95), h = 2 * 7)
 
 # 5. Plot Forecast  -----------------------------
 
-plot(next_2_weeks)
+p2 <- plot(next_2_weeks)
     
